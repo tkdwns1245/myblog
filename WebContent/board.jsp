@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="myblog.BoardDao" %>
 <%@ page import="myblog.Bbs" %>
 <%@ page import = "java.util.ArrayList" %>
@@ -27,12 +29,14 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Bootstrap -->
-	<link href="Resource/css/bootstrap.css" rel="stylesheet">
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>    
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap -->
+		<link href="Resource/css/bootstrap.css" rel="stylesheet">
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>    
+	</head>
 <body>
 <%
 	String userID=null;
@@ -60,6 +64,7 @@
 									<li><a href="board.jsp">자유게시판</a></li>
 									<li><a href="#">갤러리</a></li>
 									<li><a href="#">끄적끄적</a></li>
+									<li><a href="${pageContext.request.contextPath}/databoard/list.do">자료실</a></li>
 								</ul>
 							</li>
 							<li class="dropdown">
@@ -115,7 +120,7 @@
 					<div class="row">
 					<%
 						if(count >0) {
-							int pageBlock = 5;
+							int pageBlock = 2;
 							int imsi = count % pageSize == 0 ? 0 : 1;
 							int pageCount = count / pageSize + imsi;	//총 페이지 수
 							int startPage = (int)((currentPage-1) / pageBlock) * pageBlock + 1;//현제 페이지가 1+5의 배수일 때마다 시작 페이지 갱신

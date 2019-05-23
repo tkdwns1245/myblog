@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import= "myblog.BlogDao" %>
 <%@ page import= "myblog.User" %>
 <%
@@ -40,6 +42,7 @@
 									<li><a href="board.jsp">자유게시판</a></li>
 									<li><a href="#">갤러리</a></li>
 									<li><a href="#">끄적끄적</a></li>
+									<li><a href="${pageContext.request.contextPath}/databoard/list.do">자료실</a></li>
 								</ul>
 							</li>
 							<li class="dropdown">

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	Cookie[] cookies = request.getCookies();
 	String saveId = null;
@@ -17,7 +19,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Bootstrap -->
-	<link href="Resource/css/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/Resource/css/bootstrap.css" rel="stylesheet">
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>    
 	<title>MyBlog Main</title>
@@ -48,13 +50,14 @@
 									<li><a href="board.jsp">자유게시판</a></li>
 									<li><a href="#">갤러리</a></li>
 									<li><a href="#">끄적끄적</a></li>
+									<li><a href="${pageContext.request.contextPath}/databoard/list.do">자료실</a></li>
 								</ul>
 							</li>
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="#">연애능력평가</a>
 								<ul class="dropdown-menu">
-									<li><a href="research/researchPersonInfo.jsp">평가시작하기</a></li>
-									<li><a href="research/Result.jsp">통계결과보기</a></li>
+									<li><a href="${pageContext.request.contextPath}/research/researchPersonInfo.jsp">평가시작하기</a></li>
+									<li><a href="${pageContext.request.contextPath}/research/Result.jsp">통계결과보기</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -63,7 +66,7 @@
 			</div>
 		</nav>
 		<div>
-			<img src="Resource/img/nightView2.jpg" class="img-responsive">
+			<img src="${pageContext.request.contextPath}/Resource/img/nightView2.jpg" class="img-responsive">
 		</div>
 	</header>
 	<div class="container" id="content">
@@ -209,6 +212,6 @@
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="Resource/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resource/js/bootstrap.min.js"></script>
 </body>
 </html>
