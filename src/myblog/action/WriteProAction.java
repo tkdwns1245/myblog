@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import myblog.model.DataRoom;
 import myblog.model.DataRoomDao;
 
@@ -16,13 +19,26 @@ public class WriteProAction implements CommandAction{
 			String userID = null;
 			String title = null;
 			String content = null;
+			String uploadPath = request.getRealPath("/databoard/upload");
+			String fileName1 = "";
+			String fileName2 = "";
+			String orgfileName1 = "";
+			String orgfileName2 = "";
 			
 			DataRoom dr = new DataRoom();
 			if(session.getAttribute("userID") !=null)
 				userID = (String)session.getAttribute("userID");
 			try {
-				dr.setTitle(request.getParameter("title"));
-				dr.setContent(request.getParameter("content"));
+				MultipartRequest multi = new MultipartRequest(
+						request,uploadPath,50 * 1024 * 1024,"utf-8",new DefaultFileRenamePolicy());
+				fileName1 = multi.getFilesystemName("file1");
+				orgfileName1 = multi.getOriginalFileName("file1");
+				fileName2 = multi.getFilesystemName("file2");
+				orgfileName2 = multi.getOriginalFileName("file2");
+				dr.setTitle(multi.getParameter("title"));
+				dr.setContent(multi.getParameter("content"));
+				dr.setFiles(fileName1+"," + fileName2);
+				dr.setOrgfiles(orgfileName1 + "," + orgfileName2);
 			}catch(Exception e) {e.printStackTrace();}
 			dr.setId(userID);
 			dr.setReadcount(0);

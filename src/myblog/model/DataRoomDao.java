@@ -89,7 +89,7 @@ public class DataRoomDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String SQL = "insert into DATA_BOARD(num,title,regdate,content,id,files) values(DATA_BOARD_SEQ.nextval,?,?,?,?,?)";
+		String SQL = "insert into DATA_BOARD(num,title,regdate,content,id,files,orgfiles) values(DATA_BOARD_SEQ.nextval,?,?,?,?,?,?)";
 		
 		int result = -1;
 		try {
@@ -100,6 +100,7 @@ public class DataRoomDao {
 			pstmt.setString(3,dr.getContent());
 			pstmt.setString(4, dr.getId());
 			pstmt.setString(5, dr.getFiles());
+			pstmt.setString(6, dr.getOrgfiles());
 			return pstmt.executeUpdate();
 		}catch(Exception e)
 		{
@@ -141,6 +142,7 @@ public class DataRoomDao {
 				article.setContent(rs.getString("content"));
 				article.setId(rs.getString("id"));
 				article.setFiles(rs.getString("files"));
+				article.setOrgfiles(rs.getString("orgfiles"));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -170,6 +172,7 @@ public class DataRoomDao {
 				article.setReadcount(rs.getInt("readcount"));
 				article.setContent(rs.getString("content"));
 				article.setFiles(rs.getString("files"));
+				article.setOrgfiles(rs.getString("orgfiles"));
 			}
 		}catch(Exception e)  {
 			e.printStackTrace();
@@ -184,7 +187,7 @@ public class DataRoomDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String SQL = "update DATA_BOARD set TITLE = ?,CONTENT = ?,FILES = ? where NUM=?";
+		String SQL = "update DATA_BOARD set TITLE = ?,CONTENT = ?,FILES = ?,ORGFILES = ?where NUM=?";
 		int result = -1;
 		try {
 			conn = ConnUtil.getConnection();
@@ -192,7 +195,9 @@ public class DataRoomDao {
 			pstmt.setString(1, article.getTitle());
 			pstmt.setString(2, article.getContent());
 			pstmt.setString(3, article.getFiles());
-			pstmt.setInt(4,  article.getNum());
+			pstmt.setString(4, article.getOrgfiles());
+			pstmt.setInt(5,  article.getNum());
+			
 			pstmt.executeQuery();
 			result = 1;//수정 성공
 		}catch(Exception e) {

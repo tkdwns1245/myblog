@@ -2,6 +2,11 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="java.util.ArrayList" %>
+<%
+	ArrayList<String> fileList = (ArrayList<String>)request.getAttribute("fileList");
+	ArrayList<String> orgList = (ArrayList<String>)request.getAttribute("orgList");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -126,7 +131,12 @@
 								<th>글내용</th>
 								<td colspan="3" class="content" style="height:200px;">${content}</td>
 							</tr>
+								<%for(int i = 0 ; i<fileList.size(); i++) {
+									if(!fileList.get(i).equals("null")){%>
 							<tr>
+									<td colspan="4"><a href="${pageContext.request.contextPath}/databoard/fileDownloadPro.do?file=<%=fileList.get(i)%>">파일 <%=i+1%> : <%=orgList.get(i)%></a></td>
+							</tr>
+								<%} } %>
 						</table>
 						<c:choose>
 						<c:when test="${article.id eq userID}">
@@ -157,14 +167,13 @@
 							<label>${comment.content}</label><br>
 							<label>${comment.regdate}</label>
 							<c:if test="${comment.id eq userID}">
-							<input class="btn btn-primary" type="button" value="삭제" onClick="javascript:location.href='${pageContext.request.contextPath}/databoard/deleteCommentPro.do?
-															cnum=${comment.cnum}&bnum=${num}&pageNum=${pageNum}">
+							<input class="btn btn-primary" type="button" value="삭제" onClick="javascript:location.href='${pageContext.request.contextPath}/databoard/commentDelete.do?cnum=${comment.cnum}&bnum=${num}&pageNum=${pageNum}'">
 							</c:if>
 						</div>
 				</c:forEach>
 				<c:if test="${userID ne null }">
 					<div class="form-group">
-						<form action="${pageContext.request.contextPath}/board/commentPro.do" method="POST">
+						<form action="${pageContext.request.contextPath}/databoard/commentPro.do" method="POST">
 						<label><input class="form-control" type="text" value="${userID}" disabled></label><br>
 						<textarea class="form-control" name="content" cols="100" rows="3" ></textarea><br>
 						<input name="bnum" value="${article.num}" hidden>

@@ -62,7 +62,7 @@
 		<div class="row">
 			<div class="col-lg-2"></div>
 			<form class="col-lg-8" method="post" name="writeForm" action="${pageContext.request.contextPath}/databoard/updatePro.do?pageNum=${pageNum}"
-										onsubmit="return writeSave()">
+										onsubmit="return writeSave()" enctype="multipart/form-data">
 			<table class="table table-striped table-bordered">
 				<tr>
 					<td class="attr">제목</td>
@@ -73,6 +73,12 @@
 					<td>
 						<textarea class="form-control" name="content" rows="25" cols="50">${article.content}</textarea>
 					</td>
+				</tr>
+				<tr>
+					<td colspan="2"><div style="display:block; float:left">파일1 :&nbsp&nbsp</div><input type="file" name="file1"></td>
+				</tr>
+				<tr>
+					<td colspan="2" ><div style="display:block; float:left">파일2 :&nbsp&nbsp</div><input type="file" name="file2"></td>
 				</tr>
 				<tr>
 					<td colspan="2" class="attr">

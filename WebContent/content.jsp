@@ -154,8 +154,7 @@
 							<label><%=cList.get(i).getContent() %></label><br>
 							<label><%=sdf.format(cList.get(i).getRegdate()) %></label>
 							<%if(cList.get(i).getId().equals(userID)){ %>
-							<input class="btn btn-primary" type="button" value="삭제" onClick="javascript:location.href='deleteComment.proc.jsp?
-															cnum='+<%=cList.get(i).getCnum()%>+'&bnum='+<%=num%>+'&pageNum='+<%=pageNum%>">
+							<input class="btn btn-primary" type="button" value="삭제" onClick="javascript:location.href='deleteComment.proc.jsp?cnum=<%=cList.get(i).getCnum()%>&bnum=<%=num%>&pageNum=<%=pageNum%>'">
 							<%} %>
 						</div>
 						<%} %>

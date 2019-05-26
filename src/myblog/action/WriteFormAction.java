@@ -1,6 +1,8 @@
 package myblog.action;
 
 import java.io.PrintWriter;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.oreilly.servlet.MultipartRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +14,7 @@ public class WriteFormAction implements CommandAction{
 		int num = 0;
 		HttpSession session = request.getSession();
 		String userID=null;
+		
 		try {
 			if(request.getParameter("num") != null) {
 				num = Integer.parseInt(request.getParameter("num"));
@@ -26,7 +29,6 @@ public class WriteFormAction implements CommandAction{
 			out.println("alert('로그인을 하세요')");
 			out.println("location.href='" + request.getContextPath() + "/databoard/list.do'");
 			out.println("</script>");
-			System.out.println("!!");
 			return null;
 		}
 		return "/databoard/writeForm.jsp";

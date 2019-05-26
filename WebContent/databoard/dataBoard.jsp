@@ -3,12 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Bootstrap -->
-	<link href="${pageContext.request.contextPath}/Resource/css/bootstrap.css" rel="stylesheet">
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>    
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap -->
+		<link href="${pageContext.request.contextPath}/Resource/css/bootstrap.css" rel="stylesheet">
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>  
+	</head>  
 <body>
 <%
 	String userID=null;
@@ -79,7 +81,7 @@
 						</td>
 						<td>
 						<a href="${pageContext.request.contextPath}/databoard/content.do?num=
-						${article.num}&pageNum=${currentPage}">${article.title}></a>
+						${article.num}&pageNum=${currentPage}">${article.title}</a>
 						</td>
 						<td>
 							<a>${article.id}</a>
@@ -97,7 +99,7 @@
 						<c:set var="pageBlock" value="${3}"/>
 						<fmt:parseNumber var="result" value="${currentPage / pageBlock}" integerOnly="true"/>
 						<c:set var="startPage" value="${result * pageBlock + 1 }"/>
-						<c:set var="endPage" value="${startPage + pageblock - 1 }"/>
+						<c:set var="endPage" value="${startPage + pageBlock - 1 }"/>
 						
 						<c:if test="${endPage > pageCount }">
 							<c:set var="endPage" value="${pageCount}"/>
@@ -105,17 +107,17 @@
 						
 						<c:if test="${startPage > pageBlock }">
 							<a href=
-							"${pageContext.request.contextPath}/board/list.do?pageNum=
+							"${pageContext.request.contextPath}/databoard/list.do?pageNum=
 							${startPage - pageBlock }">이전</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
-							<a href="${pageContext.request.contextPath}/board/list.do?pageNum=${i}">[${i}]</a>
+							<a href="${pageContext.request.contextPath}/databoard/list.do?pageNum=${i}">[${i}]</a>
 						</c:forEach>
 						
 						<c:if test="${endPage < pageCount}">
 							<a href=
-							"${pageContext.request.contextPath}/board/list.do?pageNum=
+							"${pageContext.request.contextPath}/databoard/list.do?pageNum=
 							${startPage + pageBlock}">다음</a>
 						</c:if>
 					</c:if>

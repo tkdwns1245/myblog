@@ -10,7 +10,14 @@ public class DataRoom {
 	private Timestamp regdate;
 	private String content;
 	private String files;
+	private String orgfiles;
 	
+	public String getOrgfiles() {
+		return orgfiles;
+	}
+	public void setOrgfiles(String orgfiles) {
+		this.orgfiles = orgfiles;
+	}
 	public int getNum() {
 		return num;
 	}
