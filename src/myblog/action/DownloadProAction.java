@@ -12,7 +12,8 @@ public class DownloadProAction implements CommandAction{
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		String fileName = request.getParameter("file");
-		String folder = request.getServletContext().getRealPath("/databoard/upload");
+		String folder = request.getServletContext().getRealPath("/upload");
+		System.out.println(folder);
 		String filePath = folder + "/" + fileName;
 		try {
 			File file = new File(filePath);

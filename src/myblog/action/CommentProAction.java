@@ -18,6 +18,6 @@ public class CommentProAction implements CommandAction{
 		tmpComment.setContent(content);
 		DataRoomDao dao = DataRoomDao.getInstance();
 		dao.insertComment(tmpComment);
-		return "/databoard/content.do?num=" +bnum + "&pageNum=" + pageNum;
+		return "/WEB-INF/databoard/content.do?num=" +bnum + "&pageNum=" + pageNum;
 	}
 }

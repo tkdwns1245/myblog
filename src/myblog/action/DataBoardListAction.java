@@ -41,6 +41,6 @@ public class DataBoardListAction implements CommandAction{
 		request.setAttribute("number", new Integer(number));
 		request.setAttribute("articleList", articleList);
 		
-		return "/databoard/dataBoard.jsp";
+		return "/WEB-INF/databoard/dataBoard.jsp";
 	}
 }

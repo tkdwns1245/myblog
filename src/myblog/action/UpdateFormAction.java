@@ -24,7 +24,7 @@ public class UpdateFormAction implements CommandAction{
 		{
 			out.println("<script>");
 			out.println("alert('로그인을 하세요')");
-			out.println("location.href='" + request.getContextPath() + "/databoard/list.do'");
+			out.println("location.href='" + request.getContextPath() + "/WEB-INF/databoard/list.do'");
 			out.println("</script>");
 			System.out.println("!!");
 			return null;

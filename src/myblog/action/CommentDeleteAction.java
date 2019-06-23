@@ -14,6 +14,6 @@ public class CommentDeleteAction implements CommandAction{
 		DataRoomDao dao = DataRoomDao.getInstance();
 		dao.deleteComment(cnum);
 		
-		return "/databoard/content.do?num=" +bnum + "&pageNum=" + pageNum;
+		return "/WEB-INF/databoard/content.do?num=" +bnum + "&pageNum=" + pageNum;
 	}
 }

@@ -95,7 +95,7 @@
 		</c:choose>
 		<div class="container" id="main">
 			<div class="blog-header" style="margin-bottom:50px; text-align:center">
-		    	<h1 class="blog-title">자유게시판</h1>
+		    	<h1 class="blog-title">자료실 게시판</h1>
 			</div>
       		<div class="row">
         		<div class="col-sm-8 blog-main">

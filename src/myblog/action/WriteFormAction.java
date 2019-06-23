@@ -31,6 +31,6 @@ public class WriteFormAction implements CommandAction{
 			out.println("</script>");
 			return null;
 		}
-		return "/databoard/writeForm.jsp";
+		return "/WEB-INF/databoard/writeForm.jsp";
 	}
 }

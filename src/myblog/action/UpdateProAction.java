@@ -20,7 +20,7 @@ public class UpdateProAction implements CommandAction{
 		int num = 0;
 		int pageNum = 0;
 		DataRoom dr = null;
-		String uploadPath = request.getRealPath("/databoard/upload");
+		String uploadPath = request.getRealPath("/WEB-INF/databoard/upload");
 		ArrayList<String> fileNames = new ArrayList<String>();
 		ArrayList<String> orgfileNames = new ArrayList<String>();
 		

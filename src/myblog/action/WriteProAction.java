@@ -19,7 +19,7 @@ public class WriteProAction implements CommandAction{
 			String userID = null;
 			String title = null;
 			String content = null;
-			String uploadPath = request.getRealPath("/databoard/upload");
+			String uploadPath = request.getRealPath("/upload");
 			String fileName1 = "";
 			String fileName2 = "";
 			String orgfileName1 = "";
@@ -31,11 +31,13 @@ public class WriteProAction implements CommandAction{
 			try {
 				MultipartRequest multi = new MultipartRequest(
 						request,uploadPath,50 * 1024 * 1024,"utf-8",new DefaultFileRenamePolicy());
+				System.out.println(uploadPath);
 				fileName1 = multi.getFilesystemName("file1");
 				orgfileName1 = multi.getOriginalFileName("file1");
 				fileName2 = multi.getFilesystemName("file2");
 				orgfileName2 = multi.getOriginalFileName("file2");
 				dr.setTitle(multi.getParameter("title"));
+				System.out.println(multi.getParameter("title"));
 				dr.setContent(multi.getParameter("content"));
 				dr.setFiles(fileName1+"," + fileName2);
 				dr.setOrgfiles(orgfileName1 + "," + orgfileName2);
@@ -45,6 +47,6 @@ public class WriteProAction implements CommandAction{
 			dr.setRegdate( new Timestamp(System.currentTimeMillis()));
 			DataRoomDao dbPro = DataRoomDao.getInstance();
 			dbPro.insertArticle(dr);
-			return "/databoard/writePro.jsp";
+			return "/WEB-INF/databoard/writePro.jsp";
 	}
 }

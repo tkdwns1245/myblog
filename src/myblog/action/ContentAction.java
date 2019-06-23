@@ -49,6 +49,6 @@ public class ContentAction implements CommandAction{
 		request.setAttribute("commentList" , commentList);
 		request.setAttribute("fileList", fileList);
 		request.setAttribute("orgList",orgList);
-		return "/databoard/content.jsp";
+		return "/WEB-INF/databoard/content.jsp";
 	}
 }
